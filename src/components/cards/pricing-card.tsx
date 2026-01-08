@@ -7,11 +7,16 @@ import type { PricingCardProps } from '@/lib/types';
 export function PricingCard({ tier, className = '' }: PricingCardProps) {
   return (
     <div
-      className={`relative bg-neutral-100 rounded-xl p-6 md:p-8 ${
-        tier.highlighted
+      className={`
+        group relative bg-neutral-100 rounded-xl p-6 md:p-8
+        transition-all duration-300 ease-out
+        hover:-translate-y-1 hover:shadow-xl
+        ${tier.highlighted
           ? 'border-2 border-primary-950 shadow-xl ring-4 ring-primary-100'
-          : 'border border-neutral-200 shadow-md'
-      } ${className}`}
+          : 'border border-neutral-200 shadow-md hover:border-primary-300'
+        }
+        ${className}
+      `}
     >
       {/* Popular badge */}
       {tier.highlighted && (
@@ -23,7 +28,10 @@ export function PricingCard({ tier, className = '' }: PricingCardProps) {
       )}
 
       {/* Tier name */}
-      <h3 className="text-xl font-semibold text-primary-950 mb-2">
+      <h3
+        className="text-xl font-semibold text-primary-950 mb-2"
+        style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+      >
         {tier.name}
       </h3>
 
@@ -32,7 +40,10 @@ export function PricingCard({ tier, className = '' }: PricingCardProps) {
 
       {/* Price */}
       <div className="mb-6">
-        <span className="text-4xl font-bold text-primary-950">
+        <span
+          className="text-4xl font-bold text-primary-950"
+          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+        >
           {formatPrice(tier.price.amount)}
         </span>
         <span className="text-primary-600 ml-1">/ {tier.price.unit}</span>
@@ -49,8 +60,8 @@ export function PricingCard({ tier, className = '' }: PricingCardProps) {
       {/* Features */}
       <ul className="space-y-3 mb-8">
         {tier.features.map((feature, index) => (
-          <li key={index} className="flex items-start">
-            <Check className="h-5 w-5 text-primary-950 mr-3 flex-shrink-0 mt-0.5" />
+          <li key={index} className="flex items-start group/item">
+            <Check className="h-5 w-5 text-primary-950 mr-3 flex-shrink-0 mt-0.5 transition-transform duration-200 group-hover/item:scale-110" />
             <span className="text-primary-800">{feature}</span>
           </li>
         ))}
@@ -61,6 +72,7 @@ export function PricingCard({ tier, className = '' }: PricingCardProps) {
         href="/contact"
         variant="primary"
         fullWidth
+        className="transition-all duration-300 hover:scale-[1.02]"
       >
         Get Started
       </Button>

@@ -16,7 +16,7 @@ export function Navbar() {
   const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
 
   return (
-    <header className="sticky top-0 z-30 bg-neutral-50/80 backdrop-blur-premium border-b border-neutral-200/50 shadow-sm">
+    <header className="sticky top-0 z-30 bg-neutral-50/80 backdrop-blur-xl backdrop-saturate-150 border-b border-neutral-200/50 shadow-sm">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo with subtle hover effect */}

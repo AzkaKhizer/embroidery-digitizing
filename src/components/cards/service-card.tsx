@@ -14,9 +14,9 @@ export function ServiceCard({
     <div
       className={`
         group relative bg-neutral-100 rounded-xl p-6 border border-neutral-200
-        hover-lift card-shadow hover:card-shadow-hover
-        transition-all duration-300
-        border-thread
+        shadow-md hover:shadow-xl
+        transition-all duration-300 ease-out
+        hover:-translate-y-1
         ${className}
       `}
     >
@@ -24,16 +24,19 @@ export function ServiceCard({
       <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-neutral-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       {/* Thread-inspired accent line */}
-      <div className="absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-transparent via-primary-950 to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+      <div className="absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-transparent via-primary-950 to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
 
       <div className="relative z-10">
         {/* Icon with enhanced animation */}
-        <div className="w-12 h-12 bg-primary-950 rounded-lg flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+        <div className="w-12 h-12 bg-primary-950 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-lg">
           <Icon name={service.icon} size="md" className="text-neutral-50" />
         </div>
 
         {/* Content */}
-        <h3 className="text-xl font-semibold text-primary-950 mb-2 transition-colors duration-200 group-hover:text-primary-800">
+        <h3
+          className="text-xl font-semibold text-primary-950 mb-2 transition-colors duration-200 group-hover:text-primary-800"
+          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+        >
           {service.name}
         </h3>
         <p className="text-primary-700 mb-4 leading-relaxed">
