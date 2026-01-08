@@ -1,0 +1,70 @@
+import type { PricingTier } from '@/lib/types';
+
+export const pricingTiers: PricingTier[] = [
+  {
+    id: 'standard',
+    name: 'Standard',
+    price: {
+      amount: 15,
+      currency: 'USD',
+      unit: 'design',
+    },
+    description: 'Perfect for simple logos and designs',
+    features: [
+      'Up to 10,000 stitches',
+      'Single color or simple multi-color',
+      '24-48 hour turnaround',
+      'All major formats included',
+      '1 free revision',
+      'Email support',
+    ],
+    turnaround: '24-48 hours',
+    highlighted: false,
+    order: 1,
+  },
+  {
+    id: 'rush',
+    name: 'Rush',
+    price: {
+      amount: 25,
+      currency: 'USD',
+      unit: 'design',
+    },
+    description: 'When you need it fast',
+    features: [
+      'Up to 15,000 stitches',
+      'Complex multi-color designs',
+      '12 hour turnaround',
+      'All major formats included',
+      '2 free revisions',
+      'Priority email support',
+      'Phone support included',
+    ],
+    turnaround: '12 hours',
+    highlighted: true,
+    order: 2,
+  },
+  {
+    id: 'complex',
+    name: 'Complex',
+    price: {
+      amount: 35,
+      currency: 'USD',
+      unit: 'design',
+    },
+    description: 'For detailed and intricate designs',
+    features: [
+      'Unlimited stitches',
+      'Highly detailed artwork',
+      '48-72 hour turnaround',
+      'All major formats included',
+      'Unlimited revisions',
+      'Dedicated support',
+      'Color matching service',
+      'Size variations included',
+    ],
+    turnaround: '48-72 hours',
+    highlighted: false,
+    order: 3,
+  },
+];
