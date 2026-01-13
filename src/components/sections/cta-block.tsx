@@ -1,23 +1,10 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { Container } from '@/components/layout/container';
-import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 import type { CTABlockProps } from '@/lib/types';
-
-const variantClasses = {
-  primary: 'bg-primary-950',
-  secondary: 'bg-neutral-200',
-};
-
-const textClasses = {
-  primary: 'text-neutral-50',
-  secondary: 'text-primary-950',
-};
-
-const descriptionClasses = {
-  primary: 'text-neutral-300',
-  secondary: 'text-primary-700',
-};
 
 export function CTABlock({
   headline,
@@ -27,93 +14,109 @@ export function CTABlock({
   variant = 'primary',
   className = '',
 }: CTABlockProps) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const isPrimary = variant === 'primary';
+
   return (
-    <section className={`relative py-16 md:py-20 overflow-hidden ${variantClasses[variant]} ${className}`}>
-      {/* Gradient mesh background for primary variant */}
-      {variant === 'primary' && (
+    <section
+      className={`relative py-24 md:py-32 overflow-hidden ${
+        isPrimary ? 'bg-charcoal' : 'bg-ivory-dark'
+      } ${className}`}
+    >
+      {/* Background effects for primary variant */}
+      {isPrimary && (
         <>
+          {/* Gradient overlay */}
           <div
-            className="absolute inset-0 opacity-30"
+            className="absolute inset-0"
             style={{
               background: `
-                radial-gradient(at 27% 37%, rgba(255, 253, 242, 0.15) 0px, transparent 50%),
-                radial-gradient(at 97% 21%, rgba(255, 253, 242, 0.1) 0px, transparent 50%),
-                radial-gradient(at 52% 99%, rgba(255, 253, 242, 0.08) 0px, transparent 50%)
-              `
+                radial-gradient(ellipse 60% 50% at 70% 50%, rgba(193, 127, 89, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse 40% 40% at 30% 70%, rgba(212, 165, 116, 0.1) 0%, transparent 50%)
+              `,
             }}
           />
 
-          {/* Animated decorative elements */}
-          <div className="absolute top-10 left-10 w-32 h-32 opacity-10">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <circle
-                cx="50"
-                cy="50"
-                r="40"
-                stroke="#FFFDF2"
-                strokeWidth="1"
-                fill="none"
-                strokeDasharray="5,5"
-                className="animate-spin"
-                style={{ animationDuration: '20s' }}
-              />
-            </svg>
-          </div>
+          {/* Stitch pattern */}
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30h10M15 30h30M50 30h10' stroke='%23C17F59' stroke-width='1' fill='none' opacity='0.4' stroke-dasharray='2,4'/%3E%3Cpath d='M30 0v10M30 15v30M30 50v10' stroke='%23C17F59' stroke-width='1' fill='none' opacity='0.4' stroke-dasharray='2,4'/%3E%3C/svg%3E")`,
+              backgroundSize: '60px 60px',
+            }}
+          />
 
-          <div className="absolute bottom-10 right-10 w-40 h-40 opacity-10">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M 20 50 Q 50 20, 80 50 T 140 50"
-                stroke="#FFFDF2"
-                strokeWidth="2"
-                fill="none"
-                strokeDasharray="3,3"
-              />
-            </svg>
-          </div>
+          {/* Decorative lines */}
+          <div className="absolute top-1/3 left-0 w-32 h-px bg-gradient-to-r from-copper/40 to-transparent" />
+          <div className="absolute bottom-1/3 right-0 w-48 h-px bg-gradient-to-l from-copper/40 to-transparent" />
         </>
       )}
 
-      {/* Pattern for secondary variant */}
-      {variant === 'secondary' && (
+      {/* Secondary variant decorations */}
+      {!isPrimary && (
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-30"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23000000' stroke-width='1'%3E%3Cpath d='M0 20 L8 20 M12 20 L28 20 M32 20 L40 20'/%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '40px 40px'
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30h10M15 30h30M50 30h10' stroke='%230D0D0D' stroke-width='1' fill='none' opacity='0.1' stroke-dasharray='2,4'/%3E%3C/svg%3E")`,
+            backgroundSize: '60px 60px',
           }}
         />
       )}
 
       <Container className="relative z-10">
-        <div className="text-center max-w-2xl mx-auto">
-          {/* Headline with animation */}
+        <div className="max-w-3xl mx-auto text-center">
+          {/* Accent line */}
+          <div
+            className={`w-12 h-1 mx-auto mb-8 transition-all duration-700 ${
+              isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+            } ${isPrimary ? 'bg-copper' : 'bg-charcoal'}`}
+          />
+
+          {/* Headline */}
           <h2
-            className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-4 animate-fade-in-up ${textClasses[variant]}`}
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className={`font-display text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 transition-all duration-700 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } ${isPrimary ? 'text-ivory' : 'text-charcoal'}`}
+            style={{ transitionDelay: '0.1s' }}
           >
             {headline}
           </h2>
 
+          {/* Description */}
           {description && (
             <p
-              className={`text-lg mb-8 leading-relaxed animate-fade-in-up ${descriptionClasses[variant]}`}
-              style={{ animationDelay: '0.1s' }}
+              className={`text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto transition-all duration-700 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              } ${isPrimary ? 'text-ivory/70' : 'text-charcoal/70'}`}
+              style={{ transitionDelay: '0.2s' }}
             >
               {description}
             </p>
           )}
 
-          {/* Button with animation */}
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <Button
+          {/* CTA Button */}
+          <div
+            className={`transition-all duration-700 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{ transitionDelay: '0.3s' }}
+          >
+            <Link
               href={ctaHref}
-              variant={variant === 'primary' ? 'outline' : 'primary'}
-              size="lg"
-              className={variant === 'primary' ? 'border-neutral-50 text-neutral-50 hover:bg-neutral-50 hover:text-primary-950 transition-all duration-300 hover:scale-105' : 'transition-all duration-300 hover:scale-105'}
+              className={`group inline-flex items-center justify-center gap-3 px-10 py-4 text-sm font-semibold uppercase tracking-wider rounded-sm transition-all duration-300 hover:-translate-y-1 ${
+                isPrimary
+                  ? 'bg-copper text-charcoal hover:bg-copper-light hover:shadow-copper-lg'
+                  : 'bg-charcoal text-ivory hover:bg-copper hover:shadow-copper'
+              }`}
             >
               {ctaText}
-            </Button>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
       </Container>

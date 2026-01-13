@@ -46,13 +46,13 @@ export default function HomePage() {
       <ServiceGrid services={featuredServices} variant="compact" />
 
       {/* Why Choose Us Section */}
-      <section className="py-16 md:py-24 bg-neutral-50">
+      <section className="py-16 md:py-24 bg-ivory-dark">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
               Why Choose EMB Digitizers?
             </h2>
-            <p className="text-lg text-neutral-600">
+            <p className="text-lg text-charcoal/70">
               We combine expertise, technology, and dedication to deliver
               exceptional embroidery digitizing services.
             </p>

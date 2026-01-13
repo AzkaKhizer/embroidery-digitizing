@@ -1,102 +1,395 @@
-/* Premium Typography System */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* ============================================
+   REFINED ATELIER - Embroidery Digitizing
+   A sophisticated blend of craft and precision
+   ============================================ */
+
+/* Typography - Elegant serif + refined sans */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 @import "tailwindcss";
 
-/* Base styles */
+/* ============================================
+   TAILWIND V4 THEME CONFIGURATION
+   ============================================ */
+@theme {
+  /* Colors - Charcoal palette */
+  --color-charcoal-50: #F5F5F5;
+  --color-charcoal-100: #E0E0E0;
+  --color-charcoal-200: #BDBDBD;
+  --color-charcoal-300: #9E9E9E;
+  --color-charcoal-400: #757575;
+  --color-charcoal-500: #616161;
+  --color-charcoal-600: #424242;
+  --color-charcoal-700: #2D2D2D;
+  --color-charcoal-800: #1A1A1A;
+  --color-charcoal-900: #0D0D0D;
+  --color-charcoal: #0D0D0D;
+  --color-charcoal-light: #1A1A1A;
+  --color-charcoal-lighter: #2D2D2D;
+
+  /* Colors - Ivory palette */
+  --color-ivory-50: #FDFCFA;
+  --color-ivory-100: #F8F6F1;
+  --color-ivory-200: #EBE7DF;
+  --color-ivory-300: #DED8CC;
+  --color-ivory-400: #C9C0AF;
+  --color-ivory-500: #B4A892;
+  --color-ivory: #F8F6F1;
+  --color-ivory-dark: #EBE7DF;
+
+  /* Colors - Copper palette */
+  --color-copper-50: #FDF5F0;
+  --color-copper-100: #FAEBE0;
+  --color-copper-200: #F5D7C2;
+  --color-copper-300: #E5B999;
+  --color-copper-400: #D4A574;
+  --color-copper-500: #C17F59;
+  --color-copper-600: #A66B47;
+  --color-copper-700: #8A5639;
+  --color-copper-800: #6E422C;
+  --color-copper-900: #522E1F;
+  --color-copper: #C17F59;
+  --color-copper-light: #D4A574;
+  --color-copper-dark: #A66B47;
+
+  /* Font families */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  /* Box shadows */
+  --shadow-premium: 0 20px 40px rgba(13, 13, 13, 0.12), 0 8px 16px rgba(13, 13, 13, 0.08);
+  --shadow-premium-lg: 0 30px 60px rgba(13, 13, 13, 0.15), 0 12px 24px rgba(13, 13, 13, 0.1);
+  --shadow-copper: 0 10px 30px rgba(193, 127, 89, 0.3);
+  --shadow-copper-lg: 0 20px 50px rgba(193, 127, 89, 0.4);
+
+  /* Animations */
+  --animate-fade-up: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  --animate-fade-in: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  --animate-scale-in: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  --animate-slide-right: slideRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-pulse-soft: pulse 3s ease-in-out infinite;
+}
+
+/* ============================================
+   CSS CUSTOM PROPERTIES
+   ============================================ */
+:root {
+  /* Colors */
+  --color-charcoal: #0D0D0D;
+  --color-charcoal-light: #1A1A1A;
+  --color-charcoal-lighter: #2D2D2D;
+  --color-ivory: #F8F6F1;
+  --color-ivory-dark: #EBE7DF;
+  --color-copper: #C17F59;
+  --color-copper-light: #D4A574;
+  --color-copper-dark: #A66B47;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  /* Spacing */
+  --section-padding: clamp(4rem, 8vw, 8rem);
+
+  /* Transitions */
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background-color: #FFFDF2;
-    color: #0A0A0A;
+    font-family: var(--font-body);
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Display typography for headlines */
+  /* Elegant display typography */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: var(--font-display);
     font-weight: 600;
-    color: #000000;
+    line-height: 1.15;
     letter-spacing: -0.02em;
-    line-height: 1.2;
+    color: var(--color-charcoal);
   }
 
-  h1 {
-    font-size: 2.25rem;
-    font-weight: 700;
-  }
+  h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+  h2 { font-size: clamp(2rem, 4vw, 3rem); }
+  h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  h4 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
-  @media (min-width: 768px) {
-    h1 {
-      font-size: 3rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    h1 {
-      font-size: 3.75rem;
-    }
-  }
-
-  h2 {
-    font-size: 1.875rem;
-  }
-
-  @media (min-width: 768px) {
-    h2 {
-      font-size: 2.25rem;
-    }
-  }
-
-  h3 {
-    font-size: 1.5rem;
-  }
-
-  @media (min-width: 768px) {
-    h3 {
-      font-size: 1.875rem;
-    }
-  }
-
-  h4 {
-    font-size: 1.25rem;
-    font-weight: 500;
-  }
-
-  @media (min-width: 768px) {
-    h4 {
-      font-size: 1.5rem;
-    }
-  }
-
-  p {
-    font-feature-settings: 'liga' 1, 'kern' 1;
-    letter-spacing: -0.01em;
+  /* Selection color */
+  ::selection {
+    background-color: var(--color-copper);
+    color: var(--color-ivory);
   }
 }
 
-/* Focus styles for accessibility */
-@layer base {
-  :focus-visible {
-    outline: 2px solid #525252;
-    outline-offset: 2px;
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-
-  a:focus-visible,
-  button:focus-visible {
-    outline: 2px solid #525252;
-    outline-offset: 2px;
-    border-radius: 4px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Reduced motion support for accessibility */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes drawLine {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Animation utility classes */
+.animate-fade-up {
+  animation: fadeUp 0.8s var(--transition-smooth) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s var(--transition-smooth) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s var(--transition-bounce) forwards;
+}
+
+.animate-slide-right {
+  animation: slideRight 0.6s var(--transition-smooth) forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Stagger delays */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* Initial state for animated elements */
+.animate-on-load {
+  opacity: 0;
+}
+
+/* ============================================
+   COMPONENT STYLES
+   ============================================ */
+@layer components {
+  /* Glass card effect */
+  .glass-card {
+    background: rgba(248, 246, 241, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(13, 13, 13, 0.08);
+  }
+
+  /* Premium card with hover */
+  .premium-card {
+    background: var(--color-ivory);
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    transition: all 0.4s var(--transition-smooth);
+  }
+
+  .premium-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+      0 20px 40px rgba(13, 13, 13, 0.12),
+      0 8px 16px rgba(13, 13, 13, 0.08);
+    border-color: var(--color-copper);
+  }
+
+  /* Copper accent line */
+  .accent-line {
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-copper), var(--color-copper-light));
+    border-radius: 2px;
+  }
+
+  /* Stitch pattern background */
+  .stitch-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30h10M15 30h30M50 30h10' stroke='%23C17F59' stroke-width='1' fill='none' opacity='0.15' stroke-dasharray='2,4'/%3E%3Cpath d='M30 0v10M30 15v30M30 50v10' stroke='%23C17F59' stroke-width='1' fill='none' opacity='0.15' stroke-dasharray='2,4'/%3E%3C/svg%3E");
+  }
+
+  /* Grain overlay */
+  .grain-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    background: var(--color-charcoal);
+    color: var(--color-ivory);
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s var(--transition-smooth);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-copper);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(193, 127, 89, 0.3);
+  }
+
+  .btn-primary:hover::before {
+    transform: translateX(100%);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--color-charcoal);
+    border: 2px solid var(--color-charcoal);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s var(--transition-smooth);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-charcoal);
+    color: var(--color-ivory);
+    transform: translateY(-2px);
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-copper) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Copper underline */
+  .copper-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .copper-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-copper);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s var(--transition-smooth);
+  }
+
+  .copper-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -104,6 +397,30 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-copper);
+  outline-offset: 3px;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ivory-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-charcoal-lighter);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-copper);
 }
